@@ -7,7 +7,8 @@ body{
 }
 #canvas{
   background-color: white;
-  border: 1vw solid rgb(255, 255, 255);
+  margin: 0;
+  padding: 0%;
 }
 .whatSee{
   font-size: 1vw;
