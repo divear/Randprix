@@ -19,29 +19,33 @@ function Signin() {
     c.fillRect(playerCords.x,playerCords.y, blockSize, blockSize)
   }
   function move(e,c){
-    // c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
+    c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
 
     switch(e.key){
       case "w":
+      case "W":
         playerCords.y -= blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "a":
+      case "A":
         playerCords.x = playerCords.x - blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "s":
+      case "S":
         playerCords.y = playerCords.y + blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "d":
+      case "D":
         playerCords.x = playerCords.x + blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       default:
-        console.log("none");
+        console.log("none " + e.key);
     }
-    if(playerCords.x >= size || playerCords.y >= size){
+    if(playerCords.x >= size || playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
       window.location = "fail"
       return;
     }

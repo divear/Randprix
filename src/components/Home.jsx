@@ -5,7 +5,7 @@ function Home() {
         <div>
             <title>Randpix</title>
             <h1>Randpix</h1>
-            <button onClick={()=>window.location = "/new"}>Play</button>
+            <button onClick={()=>window.location = "/game"}>Play</button>
         </div>
     )
 }
