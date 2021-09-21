@@ -3,7 +3,9 @@ import React from 'react'
 function Fail() {
     return (
         <div>
+            <title>Game over</title>
             <h1>Game over</h1>
+            <button onClick={()=>window.location = "/game"} className="tryAgain">Try again.</button>
         </div>
     )
 }

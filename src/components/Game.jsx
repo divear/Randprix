@@ -19,38 +19,39 @@ function Signin() {
     c.fillRect(playerCords.x,playerCords.y, blockSize, blockSize)
   }
   function move(e,c){
-    c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
-
     switch(e.key){
       case "w":
       case "W":
+        c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
         playerCords.y -= blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "a":
       case "A":
+        c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
         playerCords.x = playerCords.x - blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "s":
       case "S":
+        c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
         playerCords.y = playerCords.y + blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "d":
       case "D":
+        c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
         playerCords.x = playerCords.x + blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       default:
-        console.log("none " + e.key);
+        console.log("nah");
     }
     if(playerCords.x >= size || playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
       window.location = "fail"
       return;
     }
-    console.log(playerCords);
-    console.log(size);
+    
   }
 
   useEffect(() => {
