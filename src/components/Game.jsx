@@ -6,14 +6,20 @@ var playerCords = {
   x: Math.round((Math.random()*size)/blockSize)*blockSize,
   y: Math.round((Math.random()*size)/blockSize)*blockSize
 }
+var allBlockCords =  []
+const totalCoins = 20
+var coins = 0
 
 function Signin() {
+  
   const canvasRef = useRef(null)
   
   const draw = c => {
     c.fillStyle = bgColor
-    for (let i = 0; i < 20; i++) {
-      c.fillRect(Math.round((Math.random()*size)/blockSize)*blockSize,Math.round((Math.random()*size)/blockSize)*blockSize, blockSize, blockSize)
+    for (let i = 0; i <= totalCoins; i++) {
+      const blockCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
+      allBlockCords.push(blockCords);
+      c.fillRect(blockCords[0], blockCords[1], blockSize, blockSize)
     }
     c.fillStyle = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-6);
     c.fillRect(playerCords.x,playerCords.y, blockSize, blockSize)
@@ -44,13 +50,21 @@ function Signin() {
         playerCords.x = playerCords.x + blockSize
         c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
-      default:
-        console.log("nah");
     }
     if(playerCords.x >= size || playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
       window.location = "fail"
       return;
     }
+    allBlockCords.forEach((e,index) => {
+      if(e[0] === playerCords.x && e[1] === playerCords.y){
+        coins++
+        console.log(coins);
+        if(coins === totalCoins+1){
+          window.location = "win"
+        }
+        allBlockCords.splice(index, 1)
+      }
+    })
     
   }
 

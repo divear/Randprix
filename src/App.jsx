@@ -7,6 +7,7 @@ import './App.css';
 import Home from "./components/Home";
 import Signin from "./components/Game";
 import Fail from "./components/Fail";
+import Win from "./components/Win";
 
 function App() {
   return(
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <Home/>
+          </Route>
+          <Route>
+            <Win/>
           </Route>
         </Switch>
     </Router>
