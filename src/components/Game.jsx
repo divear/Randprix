@@ -9,10 +9,17 @@ var playerCords = {
 var allBlockCords =  []
 const totalCoins = 20
 var coins = 0
+var time = 0
 
 function Signin() {
-  
   const canvasRef = useRef(null)
+
+  useEffect(() => {
+    setInterval(() => {
+      time++
+      console.log(time);
+    }, 1000)
+  }, [])
   
   const draw = c => {
     c.fillStyle = bgColor
@@ -58,8 +65,8 @@ function Signin() {
     allBlockCords.forEach((e,index) => {
       if(e[0] === playerCords.x && e[1] === playerCords.y){
         coins++
-        console.log(coins);
         if(coins === totalCoins+1){
+          localStorage.setItem("time", time)
           window.location = "win"
         }
         allBlockCords.splice(index, 1)
