@@ -17,7 +17,7 @@ function Signin() {
   useEffect(() => {
     setInterval(() => {
       time++
-      console.log(time);
+      console.log(coins);
     }, 1000)
   }, [])
   

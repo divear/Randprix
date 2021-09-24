@@ -6,6 +6,7 @@ function Win() {
             <title>You won</title>
             <h1>You won</h1>
             <h2>Your time: {localStorage.getItem("time")}s</h2>
+            <button onClick={()=>window.location = "/game"} className="tryAgain">Try again.</button>
         </div>
     )
 }
