@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Home from "./components/Home";
-import Signin from "./components/Game";
+import Game from "./components/Game";
 import Fail from "./components/Fail";
 import Win from "./components/Win";
 
@@ -14,7 +14,7 @@ function App() {
     <Router>
         <Switch>
           <Route path="/game">
-            <Signin />
+            <Game />
           </Route>
           <Route path="/fail">
             <Fail/>

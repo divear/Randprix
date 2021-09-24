@@ -11,7 +11,9 @@ const totalCoins = 20
 var coins = 0
 var time = 0
 
-function Signin() {
+
+function Game() {
+  localStorage.setItem("bgColor",bgColor)
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -95,4 +97,4 @@ function Signin() {
   );
 }
 
-export default Signin;
+export default Game;
