@@ -17,10 +17,36 @@ button{
   margin: 0;
   padding: 0%;
   border: 0.1vw solid white;
+  max-width: 100%;
 }
 .whatSee{
   font-size: 1vw;
 }
 .tryAgain{
   font-size: 2vw;
+}
+.startB{
+  background-color: black;
+}
+.phoneControls{
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .phoneControls{
+    background-color: gray;
+    display: inherit;
+  }
+  .phoneControls > button{
+    width: 31vw;
+    height: 31vw;
+    background-color: black;
+    font-size: 20vw;
+    user-select: none;
+    margin: 1vw auto;
+  }
+  .u{
+    margin-left: 31vw !important;
+  }
+ 
 }

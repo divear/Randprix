@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 const blockSize = 50
 var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
+const playerColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-6);
 var playerCords = {
   x: Math.round((Math.random()*size)/blockSize)*blockSize,
   y: Math.round((Math.random()*size)/blockSize)*blockSize
@@ -14,6 +15,7 @@ var time = 0
 
 function Game() {
   localStorage.setItem("bgColor",bgColor)
+  localStorage.setItem("playerColor", playerColor)
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -30,7 +32,7 @@ function Game() {
       allBlockCords.push(blockCords);
       c.fillRect(blockCords[0], blockCords[1], blockSize, blockSize)
     }
-    c.fillStyle = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-6);
+    c.fillStyle = playerColor
     c.fillRect(playerCords.x,playerCords.y, blockSize, blockSize)
   }
   function move(e,c){
@@ -93,7 +95,15 @@ function Game() {
         width={size}
         height={size}
       />
+      <div className="phoneControls">
+        <button className="u">&uarr;</button>
+        <br />
+        <button className="l">&larr;</button>
+        <button className="d">&darr;</button>
+        <button className="r">&rarr;</button>
+      </div>
     </div>
+
   );
 }
 
