@@ -21,7 +21,6 @@ function Game() {
   useEffect(() => {
     setInterval(() => {
       time++
-      console.log(coins);
     }, 1000)
   }, [])
   
@@ -35,8 +34,10 @@ function Game() {
     c.fillStyle = playerColor
     c.fillRect(playerCords.x,playerCords.y, blockSize, blockSize)
   }
-  function move(e,c){
-    switch(e.key){
+  function move(e){
+    const canvas = canvasRef.current
+    const c = canvas.getContext('2d');
+    switch(e.key || e){
       case "w":
       case "W":
         c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
@@ -96,11 +97,10 @@ function Game() {
         height={size}
       />
       <div className="phoneControls">
-        <button className="u">&uarr;</button>
-        <br />
-        <button className="l">&larr;</button>
-        <button className="d">&darr;</button>
-        <button className="r">&rarr;</button>
+        <button onClick={(e,c) => move(e = "w",c)} className="u">&uarr;</button><br />
+        <button onClick={(e,c) => move(e = "a",c)} className="l">&larr;</button>
+        <button onClick={(e,c) => move(e = "s",c)} className="d">&darr;</button>
+        <button onClick={(e,c) => move(e = "d",c)} className="r">&rarr;</button>
       </div>
     </div>
 
