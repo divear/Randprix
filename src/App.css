@@ -31,7 +31,36 @@ button{
 .phoneControls{
   display: none;
 }
+table{
+  background-color: rgb(71, 68, 68);
+  text-align: center;
+}
+thead{
+  background-color: gray;
+}
+tbody{
+  background-color: rgb(117, 116, 116);
+}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* phone version */
 @media only screen and (max-width: 768px) {
   .phoneControls{
     background-color: gray;
@@ -48,5 +77,5 @@ button{
   .u{
     margin-left: 31vw !important;
   }
- 
+
 }

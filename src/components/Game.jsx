@@ -70,7 +70,8 @@ function Game() {
     allBlockCords.forEach((e,index) => {
       if(e[0] === playerCords.x && e[1] === playerCords.y){
         coins++
-        if(coins === totalCoins+1){
+        console.log(totalCoins - coins);
+        if(coins === totalCoins){
           localStorage.setItem("time", time)
           window.location = "win"
         }
@@ -89,7 +90,7 @@ function Game() {
 
   return (
     <div>
-      <title>Sigin to Randprix</title>
+      <title>Play Randprix</title>
       <canvas
         id="canvas"
         ref={canvasRef}
