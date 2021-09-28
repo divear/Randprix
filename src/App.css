@@ -14,7 +14,7 @@ button{
 }
 #canvas{
   background-color: rgb(0, 0, 0);
-  margin: 0;
+  margin: -2vw 25vw 0 25vw;
   padding: 0%;
   border: 0.1vw solid white;
   max-width: 100%;
@@ -57,9 +57,6 @@ tbody{
 
 
 
-
-
-
 /* phone version */
 @media only screen and (max-width: 768px) {
   .phoneControls{
@@ -77,5 +74,10 @@ tbody{
   .u{
     margin-left: 31vw !important;
   }
-
+  #canvas{
+    margin: 0;
+  }
+  .logo{
+    display: none;
+  }
 }

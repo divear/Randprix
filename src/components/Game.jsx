@@ -90,6 +90,7 @@ function Game() {
 
   return (
     <div>
+      <h1 className="logo">Randprix</h1>
       <title>Play Randprix</title>
       <canvas
         id="canvas"
