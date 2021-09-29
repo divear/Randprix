@@ -1,18 +1,44 @@
-import React, { useState } from 'react'
+// import {firebaseConfig, firestore} from "../config/config"
+import {addDoc,doc, getDoc, collection, getFirestore} from "firebase/firestore"
+
+
+import React, { useEffect, useState } from 'react'
 var date = new Date
-import firebase from "../config"
+const db = getFirestore();
+
+
+
 
 export const buttons = {
     backgroundColor: localStorage.getItem("bgColor"),
     color: localStorage.getItem("playerColor")
 }  
 
-function Win() {
-    const [database, setDatabase] = useState(null)
-    const [data, setData] = useState(null)
+    function Win() {
+        const [data, setData] = useState(null)
 
-    const ref = firebase.firestore().collection("scores")
-    console.log(ref);
+
+        async function add(){
+            const docRef = await addDoc(collection(db, "scores"), {
+            id: 1,
+            score: 55,
+            time: date,
+            username: "lukas"
+        });
+    }
+    async function get(){
+        const docRef = await addDoc(collection(db, "scores"))
+    }
+
+    useEffect(() => {
+        add()
+        get()
+    }, [])
+
+
+
+
+    
 
 
     function again(){

@@ -8,7 +8,7 @@ var playerCords = {
   y: Math.round((Math.random()*size)/blockSize)*blockSize
 }
 var allBlockCords =  []
-const totalCoins = 20
+const totalCoins = 2
 var coins = 0
 var time = 0
 
