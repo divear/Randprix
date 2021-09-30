@@ -1,13 +1,13 @@
-// import {firebaseConfig, firestore} from "../config/config"
-import {addDoc,doc, getDoc, collection, getFirestore} from "firebase/firestore"
-
+const login = localStorage.getItem("login")
+const theConfigFile = require("../config/config")
 
 import React, { useEffect, useState } from 'react'
-var date = new Date
-const db = getFirestore();
+// const db = getFirestore();
 
 
+// var date = new Date
 
+console.log(login);
 
 export const buttons = {
     backgroundColor: localStorage.getItem("bgColor"),
@@ -19,7 +19,7 @@ export const buttons = {
 
 
         async function add(){
-            const docRef = await addDoc(collection(db, "scores"), {
+            const docRef = await setDoc(collection(db, "scores"), {
             id: 1,
             score: 55,
             time: date,
@@ -34,8 +34,6 @@ export const buttons = {
         add()
         get()
     }, [])
-
-
 
 
     
