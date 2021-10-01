@@ -1,11 +1,20 @@
+import React, { useEffect, useState } from 'react'
 const login = localStorage.getItem("login")
+
+
+//extremely bad way of doing this but file export doesnt work and iam not spending another day figuring out why
+const setDoc = localStorage.getItem("0")
+const doc = localStorage.getItem("1")
+const getDoc = localStorage.getItem("2")
+const collection = localStorage.getItem("3")
+const {getFirestore} = localStorage.getItem("4")
+
 const theConfigFile = require("../config/config")
 
-import React, { useEffect, useState } from 'react'
-// const db = getFirestore();
+const db = getFirestore();
 
 
-// var date = new Date
+var date = new Date
 
 console.log(login);
 
@@ -27,7 +36,7 @@ export const buttons = {
         });
     }
     async function get(){
-        const docRef = await addDoc(collection(db, "scores"))
+        const docRef = await getDoc(collection(db, "scores"))
     }
 
     useEffect(() => {
