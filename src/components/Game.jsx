@@ -3,12 +3,14 @@ const blockSize = 50
 var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
 const playerColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-6);
+const canvasColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-3);
+
 var playerCords = {
   x: Math.round((Math.random()*size)/blockSize)*blockSize,
   y: Math.round((Math.random()*size)/blockSize)*blockSize
 }
 var allBlockCords =  []
-const totalCoins = 2
+const totalCoins = 3
 var coins = 0
 var time = 0
 
@@ -90,9 +92,9 @@ function Game() {
 
   return (
     <div>
-      <h1 className="logo">Randprix</h1>
       <title>Play Randprix</title>
       <canvas
+        style={{backgroundColor: canvasColor}}
         id="canvas"
         ref={canvasRef}
         width={size}

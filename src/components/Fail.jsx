@@ -8,7 +8,6 @@ function Fail() {
     window.document.addEventListener('keypress', again)
     return (
         <div>
-            <h1 className="logo">Randprix</h1>
             <title>Game over</title>
             <h1>Game over</h1>
             <button onClick={again} style={buttons}>Try again.</button>
