@@ -25,6 +25,7 @@ button{
   font-size: 2vw;
 }
 .startB{
+  margin: 2vw;
   background-color: black;
 }
 .phoneControls{
@@ -47,6 +48,11 @@ tbody{
   top: -1vw;
   margin: 0;
   padding: 0;
+}
+.logo{
+  color: white;
+  text-decoration: none;
+  margin: 1vw;
 }
 
 

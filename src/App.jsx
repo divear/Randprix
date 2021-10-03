@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div className="topIcon">
         
-        <h1><img className="icon" src={icon} alt="icon" />Randpix</h1>
+        <a className="logo" href="/"><img className="icon" src={icon} alt="icon" />Randpix</a>
         </div>
         <Switch>
           <Route path="/game">

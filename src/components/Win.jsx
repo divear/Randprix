@@ -8,8 +8,7 @@ export const buttons = {
 
 const date = new Date()
 
-    function Win() {    
-
+function Win() {    
 
     function again(){
         window.location = "/game"

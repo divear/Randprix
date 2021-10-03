@@ -14,6 +14,22 @@ const totalCoins = 3
 var coins = 0
 var time = 0
 
+//generates a bit darker color
+function ColorLuminance() {
+  let bgc = canvasColor 
+  let lum = -0.03
+	bgc = String(bgc).replace(/[^0-9a-f]/gi, '');
+	if (bgc.length < 6) {
+		bgc = bgc[0]+bgc[0]+bgc[1]+bgc[1]+bgc[2]+bgc[2];
+	}
+	var rgb = "#", c, i;
+	for (i = 0; i < 3; i++) {
+		c = parseInt(bgc.substr(i*2,2), 16);
+		c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+		rgb += ("00"+c).substr(c.length);
+	}
+	return rgb;
+}
 
 function Game() {
   localStorage.setItem("bgColor",bgColor)
@@ -39,32 +55,31 @@ function Game() {
   function move(e){
     const canvas = canvasRef.current
     const c = canvas.getContext('2d');
+    c.fillStyle = ColorLuminance()
+    c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
+    c.fillStyle = playerColor
+
     switch(e.key || e){
       case "w":
       case "W":
-        c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
         playerCords.y -= blockSize
-        c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "a":
       case "A":
-        c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
         playerCords.x = playerCords.x - blockSize
-        c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "s":
       case "S":
-        c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
         playerCords.y = playerCords.y + blockSize
-        c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
       case "d":
       case "D":
-        c.clearRect(playerCords.x, playerCords.y, blockSize, blockSize)
         playerCords.x = playerCords.x + blockSize
-        c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
         break;
-    }
+      }
+    
+    c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
+
     if(playerCords.x >= size || playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
       window.location = "fail"
       return;
@@ -72,7 +87,6 @@ function Game() {
     allBlockCords.forEach((e,index) => {
       if(e[0] === playerCords.x && e[1] === playerCords.y){
         coins++
-        console.log(totalCoins - coins);
         if(coins === totalCoins){
           localStorage.setItem("time", time)
           window.location = "win"
