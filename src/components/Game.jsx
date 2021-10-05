@@ -4,6 +4,7 @@ var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
 const playerColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-6);
 const canvasColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-3);
+const bestScore = localStorage.getItem("bestScore") || Infinity
 
 var playerCords = {
   x: Math.round((Math.random()*size)/blockSize)*blockSize,
@@ -38,8 +39,8 @@ function Game() {
 
   useEffect(() => {
     setInterval(() => {
-      time++
-    }, 1000)
+      time+=0.01
+    }, 10)
   }, [])
   
   const draw = c => {
@@ -66,15 +67,15 @@ function Game() {
         break;
       case "a":
       case "A":
-        playerCords.x = playerCords.x - blockSize
+        playerCords.x -= blockSize
         break;
       case "s":
       case "S":
-        playerCords.y = playerCords.y + blockSize
+        playerCords.y += blockSize
         break;
       case "d":
       case "D":
-        playerCords.x = playerCords.x + blockSize
+        playerCords.x += blockSize
         break;
       }
     
@@ -88,6 +89,9 @@ function Game() {
       if(e[0] === playerCords.x && e[1] === playerCords.y){
         coins++
         if(coins === totalCoins){
+          if(time < bestScore){
+            localStorage.setItem("bestScore", time)
+          }
           localStorage.setItem("time", time)
           window.location = "win"
         }

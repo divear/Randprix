@@ -10,34 +10,21 @@ const date = new Date()
 
 function Win() {    
 
-    function again(){
-        window.location = "/game"
+    function again(e){
+        console.log(e.key );
+        if(e.key === "Enter" | e.key === " "){
+            window.location = "/game"
+        }
     }
-    window.document.addEventListener('keypress', again)
+    window.document.addEventListener('keypress', e => again(e))
     return (
         <div>
             <title>You won</title>
-            <h2>Your time: {localStorage.getItem("time")}s</h2>
+            <h2>Your time: {localStorage.getItem("time").substring(0,4)}s</h2>
             <button onClick={again} style={buttons}>Try again.</button>
             <div className="yourScores">
-                <h1>Your best scores:</h1>
-                <table>
-                    <thead>
-                        <tr> 
-                            <th>username</th>
-                            <th>score</th>
-                            <th>id</th>
-                            <th>time</th>
-                        </tr>
+                <h1>Your best score: {localStorage.getItem("bestScore")}</h1>
                 
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>{date.toUTCString()}</td>
-                            <td>28</td>
-                        </tr>
-                    </tbody>
-                </table>
             </div>
         </div>
     )
