@@ -90,9 +90,9 @@ function Game() {
         coins++
         if(coins === totalCoins){
           if(time < bestScore){
-            localStorage.setItem("bestScore", time)
+            localStorage.setItem("bestScore", time.toString().substring(0,4))
           }
-          localStorage.setItem("time", time)
+          localStorage.setItem("time", time.toString().substring(0,4))
           window.location = "win"
         }
         allBlockCords.splice(index, 1)

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+const bestScore = localStorage.getItem("bestScore")
+const time = localStorage.getItem("time")
 
 export const buttons = {
     backgroundColor: localStorage.getItem("bgColor"),
@@ -11,8 +13,7 @@ const date = new Date()
 function Win() {    
 
     function again(e){
-        console.log(e.key );
-        if(e.key === "Enter" | e.key === " "){
+        if(e.key === "Enter" | e.key === " " | !e.key){
             window.location = "/game"
         }
     }
@@ -20,11 +21,11 @@ function Win() {
     return (
         <div>
             <title>You won</title>
-            <h2>Your time: {localStorage.getItem("time").substring(0,4)}s</h2>
+            <h2>Your time: {localStorage.getItem("time")}s</h2>
             <button onClick={again} style={buttons}>Try again.</button>
             <div className="yourScores">
-                <h1>Your best score: {localStorage.getItem("bestScore")}</h1>
-                
+                <h1>Your best score: {bestScore}s</h1>
+                <h1>{bestScore === time ? "Personal best!!" : ""}</h1>
             </div>
         </div>
     )

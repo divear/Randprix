@@ -90,4 +90,7 @@ tbody{
   .logo{
     display: none;
   }
+  button{
+    font-size: 30vw;
+  }
 }

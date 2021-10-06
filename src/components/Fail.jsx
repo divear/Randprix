@@ -2,10 +2,12 @@ import React from 'react'
 import { buttons } from './Win';
 
 function Fail() {
-    function again(){
-        window.location = "/game"
+    function again(e){
+        if(e.key === "Enter" | e.key === " " | !e.key){
+            window.location = "/game"
+        }
     }
-    window.document.addEventListener('keypress', again)
+    window.document.addEventListener('keypress',e => again(e))
     return (
         <div>
             <title>Game over</title>
