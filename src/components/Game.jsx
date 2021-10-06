@@ -77,6 +77,8 @@ function Game() {
       case "D":
         playerCords.x += blockSize
         break;
+      default:
+        break
       }
     
     c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
@@ -106,7 +108,7 @@ function Game() {
     const context = canvas.getContext('2d')
     window.document.addEventListener('keypress',e => move(e, context))
     draw(context)
-  }, [draw])
+  }, [])
 
   return (
     <div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 const bestScore = localStorage.getItem("bestScore")
 const time = localStorage.getItem("time")
@@ -8,7 +8,6 @@ export const buttons = {
     color: localStorage.getItem("playerColor")
 }  
 
-const date = new Date()
 
 function Win() {    
 
