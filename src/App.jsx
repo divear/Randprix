@@ -16,20 +16,12 @@ function App() {
       </div>
 
       <Switch>
-        <Route path="/game">
-          <Game />
-        </Route>
-        <Route path="/fail">
-          <Fail/>
-        </Route>
-        <Route exact path="/">
-          <Home/>
-        </Route>
-        <Route>
-          <Win/>
-        </Route>
+        <Route path="/game"><Game /></Route>
+        <Route path="/fail"><Fail/></Route>
+        <Route path="/win"><Win/></Route>
+        <Route exact path="/"><Home/></Route>
       </Switch>
-      
+
     </BrowserRouter>
   );
 }
