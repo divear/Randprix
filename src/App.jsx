@@ -9,20 +9,22 @@ import icon from "./canvasGame.png"
 
 function App() {
   return(
-    <BrowserRouter>
+    <>
 
-      <div className="topIcon">   
+      <div  className="topIcon">   
         <a className="logo" href="/"><img className="icon" src={icon} alt="icon" />Randpix</a>
       </div>
 
-      <Switch>
-        <Route path="/game"><Game /></Route>
-        <Route path="/fail"><Fail/></Route>
-        <Route path="/win"><Win/></Route>
-        <Route exact path="/"><Home/></Route>
-      </Switch>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/game"><Game /></Route>
+          <Route path="/fail"><Fail/></Route>
+          <Route path="/win"><Win/></Route>
+          <Route exact path="/"><Home/></Route>
+        </Switch>
 
-    </BrowserRouter>
+      </BrowserRouter>
+    </>
   );
 }
 
