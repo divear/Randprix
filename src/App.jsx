@@ -9,7 +9,7 @@ import icon from "./canvasGame.png"
 
 function App() {
   return(
-    <>
+    <div>
 
       <div  className="topIcon">   
         <a className="logo" href="/"><img className="icon" src={icon} alt="icon" />Randpix</a>
@@ -24,7 +24,7 @@ function App() {
         </Switch>
 
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
