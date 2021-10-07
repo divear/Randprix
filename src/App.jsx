@@ -1,8 +1,5 @@
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import './App.css';
 import Home from "./components/Home";
 import Game from "./components/Game";
@@ -12,26 +9,28 @@ import icon from "./canvasGame.png"
 
 function App() {
   return(
-    <Router>
-      <div className="topIcon">
-        
+    <BrowserRouter>
+
+      <div className="topIcon">   
         <a className="logo" href="/"><img className="icon" src={icon} alt="icon" />Randpix</a>
-        </div>
-        <Switch>
-          <Route path="/game">
-            <Game />
-          </Route>
-          <Route path="/fail">
-            <Fail/>
-          </Route>
-          <Route exact path="/">
-            <Home/>
-          </Route>
-          <Route>
-            <Win/>
-          </Route>
-        </Switch>
-    </Router>
+      </div>
+
+      <Switch>
+        <Route path="/game">
+          <Game />
+        </Route>
+        <Route path="/fail">
+          <Fail/>
+        </Route>
+        <Route exact path="/">
+          <Home/>
+        </Route>
+        <Route>
+          <Win/>
+        </Route>
+      </Switch>
+      
+    </BrowserRouter>
   );
 }
 
