@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import trophy from "./trophy.gif"
+
 
 const bestScore = localStorage.getItem("bestScore")
 const time = localStorage.getItem("time")
@@ -19,13 +21,16 @@ function Win() {
     window.document.addEventListener('keypress', e => again(e))
     return (
         <div>
-            <title>You won</title>
-            <h2>Your time: {localStorage.getItem("time")}s</h2>
+            <title>You win</title>
+            <h1>You win!</h1>
+            <img className="imgs" src={trophy} alt="b" />
+            <h2 className="yourTime">Your time: <span className="time">{localStorage.getItem("time")}s</span></h2>
+            <br />
+            <h1 className="yourTime">Your best time: <span className="besttime">{bestScore}s</span></h1>
+
             <button onClick={again} style={buttons}>Try again.</button>
-            <div className="yourScores">
-                <h1>Your best score: {bestScore}s</h1>
-                <h1>{bestScore === time ? "Personal best!!" : ""}</h1>
-            </div>
+            <h1>{bestScore === time ? "Personal best!!" : ""}</h1>
+
         </div>
     )
 }

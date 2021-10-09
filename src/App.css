@@ -54,7 +54,20 @@ tbody{
   text-decoration: none;
   margin: 1vw;
 }
-
+.imgs{
+  margin: 1vw;
+  width: 20vw;
+}
+.time{
+  font-size: 10vw;
+}
+.yourTime{
+  float: right;
+}
+.besttime{
+  font-size: 5vw;
+  color: gold;
+}
 
 
 
