@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import trophy from "./trophy.gif"
+import trophyBestScore from "./trophyBestScore.png"
 
 
 const bestScore = localStorage.getItem("bestScore")
@@ -23,7 +24,7 @@ function Win() {
         <div>
             <title>You win</title>
             <h1>You win!</h1>
-            <img className="imgs" src={trophy} alt="b" />
+            <img className="imgs" src={time == bestScore ? trophyBestScore : trophy} alt="b" />
             <h2 className="yourTime">Your time: <span className="time">{localStorage.getItem("time")}s</span></h2>
             <br />
             <h1 className="yourTime">Your best time: <span className="besttime">{bestScore}s</span></h1>
