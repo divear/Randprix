@@ -1,5 +1,5 @@
 import React from 'react'
-import shrug from "./shrugging_emoji.png"
+import shrug from "./imgs/shrugging_emoji.png"
 
 function NotFound() {
     return (

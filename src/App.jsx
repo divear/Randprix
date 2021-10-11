@@ -5,15 +5,15 @@ import Home from "./components/Home";
 import Game from "./components/Game";
 import Fail from "./components/Fail";
 import Win from "./components/Win";
-import icon from "./canvasGame.png"
+import icon from "./Randprix.png"
 import NotFound from './components/NotFound';
 
 function App() {
   return(
     <div>
 
-      <div  className="topIcon">   
-        <a className="logo" href="/"><img className="icon" src={icon} alt="icon" />Randprix</a>
+      <div className="topIcon">   
+        <a className="logo" href="/"><img className="icon" src={icon} alt="icon" /></a>
       </div>
 
       <BrowserRouter>

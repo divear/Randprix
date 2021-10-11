@@ -1,7 +1,7 @@
 import React from 'react'
 import { buttons } from './Win';
-import fail from "./fail.png"
-import retryArrows from "./retryArrows.png"
+import fail from "./imgs/fail.png"
+import retryArrows from "./imgs/retryArrows.png"
 
 function Fail() {
     function again(e){

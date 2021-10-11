@@ -42,17 +42,17 @@ tbody{
   background-color: rgb(117, 116, 116);
 }
 .icon{
-  width: 2vw;
+  width: 4vw;
 }
 .topIcon{
-  top: -1vw;
+  top: 1vw;
   margin: 0;
   padding: 0;
 }
 .logo{
   color: white;
   text-decoration: none;
-  margin: 1vw;
+  margin: 0vw;
 }
 .imgs{
   margin: 1vw;
