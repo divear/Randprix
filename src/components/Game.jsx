@@ -121,7 +121,8 @@ function Game() {
         height={size}
       />
       <div className="phoneControls">
-        <button onClick={(e,c) => move(e = "w",c)} className="u">&uarr;</button><br />
+        <button onClick={(e,c) => move(e = "w",c)} className="u">&uarr;</button>
+        <br className={window.innerWidth > 600 && window.innerWidth < 820 ? "no" : ""} />
         <button onClick={(e,c) => move(e = "a",c)} className="l">&larr;</button>
         <button onClick={(e,c) => move(e = "s",c)} className="d">&darr;</button>
         <button onClick={(e,c) => move(e = "d",c)} className="r">&rarr;</button>

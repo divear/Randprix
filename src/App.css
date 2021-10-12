@@ -91,6 +91,9 @@ tbody{
   margin: 1vw;
   border-radius: 1vw;
 }
+.no{
+  display: none;
+}
 
 
 
@@ -99,9 +102,8 @@ tbody{
 
 
 
-
-/* phone and tablet version */
-@media only screen and (max-width: 820px) {
+/* phone version */
+@media only screen and (max-width: 600px) {
   .phoneControls{
     background-color: gray;
     display: inherit;
@@ -117,6 +119,35 @@ tbody{
   .u{
     margin-left: 31vw !important;
   }
+  #canvas{
+    margin: 0;
+  }
+  .logo{
+    display: none;
+  }
+  button{
+    font-size: 30vw;
+  }
+}
+
+
+
+
+
+/* tablet version */
+@media only screen and (min-width: 600px) and (max-width: 840px) {
+  .phoneControls{
+    background-color: rgb(0, 0, 0);
+    display: inherit;
+  }
+  .phoneControls > button{
+    width: 20vw;
+    height: 20vw;
+    background-color: black;
+    font-size: 10vw;
+    user-select: none;
+  }
+  
   #canvas{
     margin: 0;
   }
