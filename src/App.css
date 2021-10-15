@@ -10,7 +10,10 @@ button{
   font-size: 5vw;
   border-radius: 0.1vw;
   border: 0.1vw white solid;
-  color:white;
+  color: white;
+}
+button:hover{
+  filter: brightness(85%);
 }
 #canvas{
   margin: -2vw 25vw 0 25vw;
@@ -94,7 +97,11 @@ tbody{
 .no{
   display: none;
 }
-
+.hint{
+  position: absolute;
+  color: white;
+  float: left;
+}
 
 
 

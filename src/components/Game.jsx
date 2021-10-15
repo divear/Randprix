@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import coin from "./imgs/coin.png"
 const blockSize = 50
 var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
@@ -14,6 +15,9 @@ var allBlockCords =  []
 const totalCoins = 3
 var coins = 0
 var time = 0
+
+const image = new Image()
+image.src = coin
 
 //generates a bit darker color
 function ColorLuminance() {
@@ -48,7 +52,10 @@ function Game() {
     for (let i = 0; i <= totalCoins; i++) {
       const blockCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
       allBlockCords.push(blockCords);
-      c.fillRect(blockCords[0], blockCords[1], blockSize, blockSize)
+ 
+      console.log(image);
+      c.drawImage(image, blockCords[0], blockCords[1], blockSize, blockSize);
+      // c.fillRect(blockCords[0], blockCords[1], blockSize, blockSize)
     }
     c.fillStyle = playerColor
     c.fillRect(playerCords.x,playerCords.y, blockSize, blockSize)
@@ -113,6 +120,8 @@ function Game() {
   return (
     <div>
       <title>Play Randprix</title>
+
+      <h1 className={localStorage.getItem("bestScore") ? "no" : "hint"}>Use WASD to move.</h1>
       <canvas
         style={{backgroundColor: canvasColor}}
         id="canvas"
