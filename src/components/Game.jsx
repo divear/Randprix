@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import coin from "./imgs/coin.png"
+import player from "./imgs/player.png"
 const blockSize = 50
 var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
@@ -19,22 +20,8 @@ var time = 0
 const image = new Image()
 image.src = coin
 
-//generates a bit darker color
-function ColorLuminance() {
-  let bgc = canvasColor 
-  let lum = -0.03
-	bgc = String(bgc).replace(/[^0-9a-f]/gi, '');
-	if (bgc.length < 6) {
-		bgc = bgc[0]+bgc[0]+bgc[1]+bgc[1]+bgc[2]+bgc[2];
-	}
-	var rgb = "#", c, i;
-	for (i = 0; i < 3; i++) {
-		c = parseInt(bgc.substr(i*2,2), 16);
-		c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
-		rgb += ("00"+c).substr(c.length);
-	}
-	return rgb;
-}
+const playerImg = new Image()
+playerImg.src = player
 
 function Game() {
   localStorage.setItem("bgColor",bgColor)
@@ -55,16 +42,14 @@ function Game() {
  
       console.log(image);
       c.drawImage(image, blockCords[0], blockCords[1], blockSize, blockSize);
-      // c.fillRect(blockCords[0], blockCords[1], blockSize, blockSize)
     }
     c.fillStyle = playerColor
-    c.fillRect(playerCords.x,playerCords.y, blockSize, blockSize)
+    c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
   }
   function move(e){
     const canvas = canvasRef.current
     const c = canvas.getContext('2d');
-    c.fillStyle = ColorLuminance()
-    c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
+    c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
     c.fillStyle = playerColor
 
     switch(e.key || e){
@@ -88,7 +73,8 @@ function Game() {
         break
       }
     
-    c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
+     c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
+
 
     if(playerCords.x >= size || playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
       window.location = "fail"
