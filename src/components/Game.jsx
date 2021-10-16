@@ -4,7 +4,6 @@ import player from "./imgs/player.png"
 const blockSize = 50
 var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
-const playerColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-6);
 const canvasColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-3);
 const bestScore = localStorage.getItem("bestScore") || Infinity
 
@@ -25,7 +24,6 @@ playerImg.src = player
 
 function Game() {
   localStorage.setItem("bgColor",bgColor)
-  localStorage.setItem("playerColor", playerColor)
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -34,23 +32,23 @@ function Game() {
     }, 10)
   }, [])
   
-  const draw = c => {
-    c.fillStyle = bgColor
-    for (let i = 0; i <= totalCoins; i++) {
-      const blockCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
-      allBlockCords.push(blockCords);
- 
-      console.log(image);
-      c.drawImage(image, blockCords[0], blockCords[1], blockSize, blockSize);
+  const draw = (c) => {
+    image.onload = () => {
+      for (let i = 0; i <= totalCoins; i++) {
+        const blockCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
+        allBlockCords.push(blockCords);
+        c.drawImage(image, blockCords[0], blockCords[1], blockSize, blockSize);
+        
+      }
     }
-    c.fillStyle = playerColor
-    c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
+    playerImg.onload = () => {
+      c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
+    };
   }
   function move(e){
     const canvas = canvasRef.current
     const c = canvas.getContext('2d');
-    c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
-    c.fillStyle = playerColor
+    c.clearRect( playerCords.x,playerCords.y, blockSize, blockSize);
 
     switch(e.key || e){
       case "w":
@@ -73,6 +71,8 @@ function Game() {
         break
       }
     
+      console.log(image);
+      
      c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
 
 
