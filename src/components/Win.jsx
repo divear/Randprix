@@ -13,7 +13,6 @@ export const buttons = {
 
 
 function Win() {    
-
     function again(e){
         if(e.key === "Enter" | e.key === " " | !e.key){
             window.location = "/game"

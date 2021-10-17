@@ -6,7 +6,6 @@ var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
 const canvasColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-3);
 const bestScore = localStorage.getItem("bestScore") || Infinity
-
 var playerCords = {
   x: Math.round((Math.random()*size)/blockSize)*blockSize,
   y: Math.round((Math.random()*size)/blockSize)*blockSize
@@ -21,6 +20,23 @@ image.src = coin
 
 const playerImg = new Image()
 playerImg.src = player
+
+//generates a bit darker color
+function ColorLuminance() {
+  let bgc = canvasColor 
+  let lum = -0.03
+	bgc = String(bgc).replace(/[^0-9a-f]/gi, '');
+	if (bgc.length < 6) {
+		bgc = bgc[0]+bgc[0]+bgc[1]+bgc[1]+bgc[2]+bgc[2];
+	}
+	var rgb = "#", c, i;
+	for (i = 0; i < 3; i++) {
+		c = parseInt(bgc.substr(i*2,2), 16);
+		c = Math.round(Math.min(Math.max(0, c + (c * lum)), 255)).toString(16);
+		rgb += ("00"+c).substr(c.length);
+	}
+	return rgb;
+}
 
 function Game() {
   localStorage.setItem("bgColor",bgColor)
@@ -48,7 +64,17 @@ function Game() {
   function move(e){
     const canvas = canvasRef.current
     const c = canvas.getContext('2d');
-    c.clearRect( playerCords.x,playerCords.y, blockSize, blockSize);
+    c.clearRect(playerCords.x,playerCords.y, blockSize, blockSize);
+
+    c.fillStyle = ColorLuminance()
+    c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
+
+
+    //checks if player has hit the wall before moving 
+    if(playerCords.x >= size || playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
+      window.location = "fail"
+      return;
+    }
 
     switch(e.key || e){
       case "w":
@@ -70,16 +96,8 @@ function Game() {
       default:
         break
       }
-    
-      console.log(image);
-      
      c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
 
-
-    if(playerCords.x >= size || playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
-      window.location = "fail"
-      return;
-    }
     allBlockCords.forEach((e,index) => {
       if(e[0] === playerCords.x && e[1] === playerCords.y){
         coins++
@@ -92,8 +110,7 @@ function Game() {
         }
         allBlockCords.splice(index, 1)
       }
-    })
-    
+    }) 
   }
 
   useEffect(() => {
