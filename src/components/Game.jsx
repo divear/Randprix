@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import coin from "./imgs/coin.png"
 import player from "./imgs/player.png"
+import skull from "./imgs/skull.png"
 const blockSize = 50
 var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
@@ -11,13 +12,15 @@ var playerCords = {
   y: Math.round((Math.random()*size)/blockSize)*blockSize
 }
 var allBlockCords =  []
+var allSkullCords = []
 const totalCoins = 3
 var coins = 0
 var time = 0
 
 const image = new Image()
 image.src = coin
-
+const skullImg = new Image()
+skullImg.src = skull
 const playerImg = new Image()
 playerImg.src = player
 
@@ -50,11 +53,13 @@ function Game() {
   
   const draw = (c) => {
     image.onload = () => {
-      for (let i = 0; i <= totalCoins; i++) {
-        const blockCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
-        allBlockCords.push(blockCords);
-        c.drawImage(image, blockCords[0], blockCords[1], blockSize, blockSize);
-        
+      skullImg.onload = () => {
+        for (let i = 0; i <= totalCoins; i++) {
+          const blockCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
+          allBlockCords.push(blockCords);
+          c.drawImage(image, blockCords[0], blockCords[1], blockSize, blockSize);
+          c.drawImage(skullImg, allSkullCords[0], allSkullCords[1], blockSize, blockSize);
+        }
       }
     }
     playerImg.onload = () => {
@@ -111,6 +116,11 @@ function Game() {
         allBlockCords.splice(index, 1)
       }
     }) 
+    allSkullCords.forEach((e) => {
+      if(e[0] === playerCords.x && e[1] === playerCords.y){
+        window.location = "fail"
+      }
+    })
   }
 
   useEffect(() => {

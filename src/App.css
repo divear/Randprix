@@ -66,6 +66,7 @@ tbody{
 }
 .yourTime{
   float: right;
+  margin: 5vw;
 }
 .besttime{
   font-size: 5vw;
