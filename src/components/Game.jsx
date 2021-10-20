@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import coin from "./imgs/coin.png"
 import player from "./imgs/player.png"
 import skull from "./imgs/skull.png"
+import happy from "./imgs/playerHappy.png"
 const blockSize = 50
 var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
@@ -23,6 +24,7 @@ const skullImg = new Image()
 skullImg.src = skull
 const playerImg = new Image()
 playerImg.src = player
+
 
 //generates a bit darker color
 function ColorLuminance() {
@@ -56,9 +58,14 @@ function Game() {
       skullImg.onload = () => {
         for (let i = 0; i <= totalCoins; i++) {
           const blockCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
+          const skullCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
+          console.log(blockCords);
+          console.log(skullCords);
+
           allBlockCords.push(blockCords);
+          allSkullCords.push(skullCords)
           c.drawImage(image, blockCords[0], blockCords[1], blockSize, blockSize);
-          c.drawImage(skullImg, allSkullCords[0], allSkullCords[1], blockSize, blockSize);
+          c.drawImage(skullImg, skullCords[0], skullCords[1], blockSize, blockSize);
         }
       }
     }
@@ -106,6 +113,7 @@ function Game() {
     allBlockCords.forEach((e,index) => {
       if(e[0] === playerCords.x && e[1] === playerCords.y){
         coins++
+        playerImg.src = happy
         if(coins === totalCoins){
           if(time < bestScore){
             localStorage.setItem("bestScore", time.toString().substring(0,4))
@@ -114,6 +122,8 @@ function Game() {
           window.location = "win"
         }
         allBlockCords.splice(index, 1)
+      }else{
+        playerImg.src = player
       }
     }) 
     allSkullCords.forEach((e) => {
