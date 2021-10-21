@@ -24,8 +24,9 @@ button:hover{
 .whatSee{
   font-size: 1vw;
 }
-.tryAgain{
-  font-size: 2vw;
+.tryAgainButton{
+  font-size: 10vw;
+  margin: 1vw;
 }
 .startB{
   margin: 2vw;
@@ -103,7 +104,10 @@ tbody{
   color: white;
   float: left;
 }
-
+.goText{
+  font-size: 10vw;
+  margin: 1vw;
+}
 
 
 

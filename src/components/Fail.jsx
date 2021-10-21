@@ -13,8 +13,7 @@ function Fail() {
     return (
         <div>
             <title>Game over</title>
-            <h1>Game over</h1>
-            <img className="imgs" src={fail} alt="" />
+            <h1 className="goText">Game over</h1>
             <br />
             <button className="tryAgainButton" onClick={again} style={buttons}>Try again <img className="retryArrows" src={retryArrows} alt="" /></button>
         </div>
