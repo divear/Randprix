@@ -7,6 +7,7 @@ import Fail from "./components/Fail";
 import Win from "./components/Win";
 import icon from "./Randprix.png"
 import NotFound from './components/NotFound';
+import About from './components/About';
 
 function App() {
   return(
@@ -21,6 +22,7 @@ function App() {
           <Route path="/game"><Game /></Route>
           <Route path="/fail"><Fail/></Route>
           <Route path="/win"><Win/></Route>
+          <Route path="/about"><About/></Route>
           <Route exact path="/"><Home/></Route>
 
 

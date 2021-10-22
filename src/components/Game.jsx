@@ -74,6 +74,14 @@ function Game() {
     };
   }
   function move(e){
+
+    //checks if player has hit the wall before moving 
+    if(playerCords.x >= size - 300|| playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
+    
+      window.location = "fail"
+      return;
+    }
+
     const canvas = canvasRef.current
     const c = canvas.getContext('2d');
     c.clearRect(playerCords.x,playerCords.y, blockSize, blockSize);
@@ -82,11 +90,7 @@ function Game() {
     c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
 
 
-    //checks if player has hit the wall before moving 
-    if(playerCords.x >= size || playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
-      window.location = "fail"
-      return;
-    }
+
 
     switch(e.key || e){
       case "w":
@@ -108,6 +112,7 @@ function Game() {
       default:
         break
       }
+
      c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
 
     allBlockCords.forEach((e,index) => {
@@ -159,6 +164,7 @@ function Game() {
         <button onClick={(e,c) => move(e = "s",c)} className="d">&darr;</button>
         <button onClick={(e,c) => move(e = "d",c)} className="r">&rarr;</button>
       </div>
+
     </div>
 
   );
