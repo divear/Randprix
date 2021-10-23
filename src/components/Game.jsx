@@ -147,7 +147,7 @@ function Game() {
 
   return (
     <div>
-      <title>Play Randprix</title>
+      <title>Play Randprix </title>
 
       <h1 className={localStorage.getItem("bestScore") ? "no" : "hint"}>Use WASD to move.</h1>
       <canvas

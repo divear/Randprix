@@ -23,6 +23,7 @@ function Home() {
             <h1>Hint:</h1>
             <h3>Use {window.innerHeight > 820 ? "WASD" : "the arrow buttons on the screen"} to move.</h3>
             <h3>Collect 3 out of 4 coins to win.</h3>
+            <h3>Don't touch the skulls.</h3>
 
             <h2 className="yourTime">Your last time: <span className="time">{localStorage.getItem("time")}s</span></h2>
             <br />
