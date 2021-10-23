@@ -18,16 +18,16 @@ function Home() {
     return (
         <div>
             <title>Randprix</title>
-            <button className="startB" onClick={(e)=>again(e)}>Play</button>
+            <button className={bestScore ? "startB" : "startBig"} onClick={(e)=>again(e)}>Play</button>
 
             <h1>Hint:</h1>
             <h3>Use {window.innerHeight > 820 ? "WASD" : "the arrow buttons on the screen"} to move.</h3>
             <h3>Collect 3 out of 4 coins to win.</h3>
-            <h3>Don't touch the skulls.</h3>
+            <h3>Don't touch the skulls and walls.</h3>
 
-            <h2 className="yourTime">Your last time: <span className="time">{localStorage.getItem("time")}s</span></h2>
+            <h2 className={bestScore ? "yourTime" : "no"}>Your last time: <span className="time">{localStorage.getItem("time")}s</span></h2>
             <br />
-            <h1 className="yourTime">Your best time: <span className="besttime">{bestScore}s</span></h1>
+            <h1 className={bestScore ? "yourTime" : "no"}>Your best time: <span className="besttime">{bestScore}s</span></h1>
 
         </div>
     )

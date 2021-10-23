@@ -76,7 +76,7 @@ function Game() {
   function move(e){
 
     //checks if player has hit the wall before moving 
-    if(playerCords.x >= size - 300|| playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
+    if(playerCords.x >= size|| playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
     
       window.location = "fail"
       return;
@@ -147,7 +147,7 @@ function Game() {
 
   return (
     <div>
-      <title>Play Randprix </title>
+      <title>Play Randprix</title>
 
       <h1 className={localStorage.getItem("bestScore") ? "no" : "hint"}>Use WASD to move.</h1>
       <canvas

@@ -11,6 +11,7 @@ button{
   border-radius: 0.1vw;
   border: 0.1vw white solid;
   color: white;
+  background-color: black;
 }
 button:hover{
   filter: brightness(85%);
@@ -26,11 +27,14 @@ button:hover{
 }
 .tryAgainButton{
   font-size: 10vw;
-  margin: 1vw;
+  margin: 1vw ;
 }
 .startB{
   margin: 2vw;
   background-color: black;
+}
+.startBig{
+  font-size: 6vw;
 }
 .phoneControls{
   display: none;
@@ -108,6 +112,7 @@ tbody{
   font-size: 10vw;
   margin: 1vw;
 }
+
 
 
 
