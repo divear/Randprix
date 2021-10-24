@@ -8,7 +8,7 @@ var size = Math.round(window.innerHeight/150)*(blockSize*2.7)
 const bgColor = "#" + ((1<<24)*Math.random() | 0).toString(16)
 const canvasColor = '#' + ("000000" + (0xFFFFFF ^ parseInt(bgColor.substring(1),16)).toString(16)).slice(-3);
 const bestScore = localStorage.getItem("bestScore") || Infinity
-var playerCords = {
+var playerCoords = {
   x: Math.round((Math.random()*size)/blockSize)*blockSize,
   y: Math.round((Math.random()*size)/blockSize)*blockSize
 }
@@ -17,6 +17,10 @@ var allSkullCords = []
 const totalCoins = 3
 var coins = 0
 var time = 0
+var beforeCoords = {
+  x: 0,
+  y: 0
+}
 
 const image = new Image()
 image.src = coin
@@ -59,9 +63,6 @@ function Game() {
         for (let i = 0; i <= totalCoins; i++) {
           const blockCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
           const skullCords = [Math.round((Math.random()*size)/blockSize)*blockSize, Math.round((Math.random()*size)/blockSize)*blockSize];
-          console.log(blockCords);
-          console.log(skullCords);
-
           allBlockCords.push(blockCords);
           allSkullCords.push(skullCords)
           c.drawImage(image, blockCords[0], blockCords[1], blockSize, blockSize);
@@ -70,53 +71,45 @@ function Game() {
       }
     }
     playerImg.onload = () => {
-      c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
+      c.drawImage(playerImg, playerCoords.x,playerCoords.y, blockSize, blockSize);
     };
   }
   function move(e){
-
-    //checks if player has hit the wall before moving 
-    if(playerCords.x >= size|| playerCords.y >= size || playerCords.x <= -50 || playerCords.y <=-50){
-    
-      window.location = "fail"
-      return;
-    }
-
     const canvas = canvasRef.current
     const c = canvas.getContext('2d');
-    c.clearRect(playerCords.x,playerCords.y, blockSize, blockSize);
+    c.clearRect(playerCoords.x,playerCoords.y, blockSize, blockSize);
 
     c.fillStyle = ColorLuminance()
-    c.fillRect(playerCords.x, playerCords.y, blockSize, blockSize)
-
-
-
+    c.fillRect(playerCoords.x, playerCoords.y, blockSize, blockSize)
 
     switch(e.key || e){
       case "w":
       case "W":
-        playerCords.y -= blockSize
+        if(playerCoords.y <= 0) break
+        playerCoords.y -= blockSize
         break;
       case "a":
       case "A":
-        playerCords.x -= blockSize
+        if(playerCoords.x <= 0) break
+        playerCoords.x -= blockSize
         break;
       case "s":
       case "S":
-        playerCords.y += blockSize
+        if(playerCoords.y >= size-50) break
+        playerCoords.y += blockSize
         break;
       case "d":
       case "D":
-        playerCords.x += blockSize
+        if(playerCoords.x >= size-50) break
+        playerCoords.x += blockSize
         break;
       default:
         break
       }
-
-     c.drawImage(playerImg, playerCords.x,playerCords.y, blockSize, blockSize);
+     c.drawImage(playerImg, playerCoords.x,playerCoords.y, blockSize, blockSize);
 
     allBlockCords.forEach((e,index) => {
-      if(e[0] === playerCords.x && e[1] === playerCords.y){
+      if(e[0] === playerCoords.x && e[1] === playerCoords.y){
         coins++
         playerImg.src = happy
         if(coins === totalCoins){
@@ -132,7 +125,7 @@ function Game() {
       }
     }) 
     allSkullCords.forEach((e) => {
-      if(e[0] === playerCords.x && e[1] === playerCords.y){
+      if(e[0] === playerCoords.x && e[1] === playerCoords.y){
         window.location = "fail"
       }
     })

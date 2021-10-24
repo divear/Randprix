@@ -1,7 +1,7 @@
 import React from 'react'
 import { buttons } from './Win';
-import fail from "./imgs/fail.png"
 import retryArrows from "./imgs/retryArrows.png"
+import skull from "./imgs/skull.png"
 
 function Fail() {
     function again(e){
@@ -13,7 +13,7 @@ function Fail() {
     return (
         <div>
             <title>Game over</title>
-            <h1 className="goText">Game over</h1>
+            <h1 className="goText">Game over <img className="skull" src={skull} alt="!" /></h1>
             <br />
             <button className="tryAgainButton" onClick={again} style={buttons}>Try again <img className="retryArrows" src={retryArrows} alt="" /></button>
         </div>
