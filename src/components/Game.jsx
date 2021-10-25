@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import coin from "./imgs/coin.png"
 import player from "./imgs/player.png"
 import skull from "./imgs/skull.png"
@@ -15,7 +15,7 @@ var playerCoords = {
 var allBlockCords =  []
 var allSkullCords = []
 const totalCoins = 3
-var coins = 0
+
 var time = 0
 var beforeCoords = {
   x: 0,
@@ -48,6 +48,7 @@ function ColorLuminance() {
 }
 
 function Game() {
+  var [coins, setCoins] = useState(0)
   localStorage.setItem("bgColor",bgColor)
   const canvasRef = useRef(null)
 
@@ -111,12 +112,13 @@ function Game() {
     allBlockCords.forEach((e,index) => {
       if(e[0] === playerCoords.x && e[1] === playerCoords.y){
         coins++
-        playerImg.src = happy
+        setCoins(coins)
+        playerImg.src = happy;
         if(coins === totalCoins){
           if(time < bestScore){
             localStorage.setItem("bestScore", time.toString().substring(0,4))
           }
-          localStorage.setItem("time", time.toString().substring(0,4))
+          localStorage.setItem("time", time.toString().substring(0,4));
           window.location = "win"
         }
         allBlockCords.splice(index, 1)
@@ -142,7 +144,8 @@ function Game() {
     <div>
       <title>Play Randprix</title>
 
-      <h1 className={localStorage.getItem("bestScore") ? "no" : "hint"}>Use WASD to move.</h1>
+      <h1 className={localStorage.getItem("bestScore") ? "no" : "hint"}>Use {window.innerHeight > 820 ? "WASD" : "the arrow buttons on the screen"} to move.</h1>
+      <h1 className="points">{coins}/3</h1>
       <canvas
         style={{backgroundColor: canvasColor}}
         id="canvas"

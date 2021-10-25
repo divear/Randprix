@@ -122,7 +122,10 @@ tbody{
   top: 4vw;
   width: 15vw;
 }
-
+.points{
+  position: absolute;
+  right: 1vw;
+}
 
 
 
