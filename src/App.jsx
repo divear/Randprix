@@ -33,6 +33,7 @@ function App() {
         </Switch>
 
       </BrowserRouter>
+      <h3> Lukáš Odehnal 2021</h3>
     </div>
   );
 }
